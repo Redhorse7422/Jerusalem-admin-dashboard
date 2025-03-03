@@ -39,6 +39,42 @@ export function CloseIcon(props: IconProps) {
   );
 }
 
+export function PlusIcon(props: IconProps) {
+  return (
+    <svg
+      width={12}
+      height={12}
+      viewBox="0 0 12 12"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M6 0C6.414 0 6.75 0.336 6.75 0.75V5.25H11.25C11.664 5.25 12 5.586 12 6C12 6.414 11.664 6.75 11.25 6.75H6.75V11.25C6.75 11.664 6.414 12 6 12C5.586 12 5.25 11.664 5.25 11.25V6.75H0.75C0.336 6.75 0 6.414 0 6C0 5.586 0.336 5.25 0.75 5.25H5.25V0.75C5.25 0.336 5.586 0 6 0Z" />
+    </svg>
+  );
+}
+
+export function EditIcon(props: IconProps) {
+  return (
+    <svg
+      width={14}
+      height={14}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M12 20h9" />
+      <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
+    </svg>
+  );
+}
+
+
+
+
 export function ArrowLeftIcon(props: IconProps) {
   return (
     <svg
@@ -55,6 +91,23 @@ export function ArrowLeftIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function ArrowRightIcon(props: IconProps) {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="currentColor"
+      {...props}
+    >
+      <path
+        d="M2.25078 8.38125H14.2602L9.47891 3.51562C9.22578 3.2625 9.22578 2.86875 9.47891 2.61562C9.73203 2.3625 10.1258 2.3625 10.3789 2.61562L16.2008 8.52187C16.4539 8.775 16.4539 9.16875 16.2008 9.42188L10.3789 15.3281C10.2664 15.4406 10.0977 15.525 9.92891 15.525C9.76016 15.525 9.61953 15.4687 9.47891 15.3562C9.22578 15.1031 9.22578 14.7094 9.47891 14.4563L14.232 9.64687H2.25078C1.91328 9.64687 1.63203 9.36562 1.63203 9.02812C1.63203 8.6625 1.91328 8.38125 2.25078 8.38125Z"
+      />
+    </svg>
+  );
+}
+
 
 export function ChevronUpIcon(props: IconProps) {
   return (

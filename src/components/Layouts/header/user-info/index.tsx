@@ -11,14 +11,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { LogOutIcon, SettingsIcon, UserIcon } from "./icons";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 export function UserInfo() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const router = useRouter();
+  const { user, logout } = useAuth();
   const USER = {
     name: "John Smith",
     email: "johnson@nextadmin.com",
     img: "/images/user/user-03.png",
+  };
+
+  const handleLogout = () => {
+    Cookies.remove("auth_token"); // ✅ Remove the auth token
+    router.push("/auth/sign-in"); // ✅ Redirect after logout
+    logout();
   };
 
   return (
@@ -36,7 +46,7 @@ export function UserInfo() {
             height={200}
           />
           <figcaption className="flex items-center gap-1 font-medium text-dark dark:text-dark-6 max-[1024px]:sr-only">
-            <span>{USER.name}</span>
+            <span>{user?.name}</span>
 
             <ChevronUpIcon
               aria-hidden
@@ -68,10 +78,10 @@ export function UserInfo() {
 
           <figcaption className="space-y-1 text-base font-medium">
             <div className="mb-2 leading-none text-dark dark:text-white">
-              {USER.name}
+              {user?.name}
             </div>
 
-            <div className="leading-none text-gray-6">{USER.email}</div>
+            <div className="leading-none text-gray-6">{user?.email}</div>
           </figcaption>
         </figure>
 
@@ -106,7 +116,7 @@ export function UserInfo() {
         <div className="p-2 text-base text-[#4B5563] dark:text-dark-6">
           <button
             className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-[9px] hover:bg-gray-2 hover:text-dark dark:hover:bg-dark-3 dark:hover:text-white"
-            onClick={() => setIsOpen(false)}
+            onClick={() => handleLogout()}
           >
             <LogOutIcon />
 

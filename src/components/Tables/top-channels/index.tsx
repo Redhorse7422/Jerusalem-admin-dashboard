@@ -21,9 +21,9 @@ export async function TopChannels({ className }: { className?: string }) {
         className,
       )}
     >
-      <h2 className="mb-4 text-body-2xlg font-bold text-dark dark:text-white">
+      {/* <h2 className="mb-4 text-body-2xlg font-bold text-dark dark:text-white">
         Top Channels
-      </h2>
+      </h2> */}
 
       <Table>
         <TableHeader>

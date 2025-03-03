@@ -9,10 +9,12 @@ type PropsType = {
   items: { value: string; label: string }[];
   prefixIcon?: React.ReactNode;
   className?: string;
+  onChange?: (value: string) => void;
+  error?: string;
 } & (
-  | { placeholder?: string; defaultValue: string }
-  | { placeholder: string; defaultValue?: string }
-);
+    | { placeholder?: string; defaultValue: string }
+    | { placeholder: string; defaultValue?: string }
+  );
 
 export function Select({
   items,
@@ -21,6 +23,8 @@ export function Select({
   placeholder,
   prefixIcon,
   className,
+  onChange,
+  error,
 }: PropsType) {
   const id = useId();
 
@@ -45,7 +49,10 @@ export function Select({
         <select
           id={id}
           defaultValue={defaultValue || ""}
-          onChange={() => setIsOptionSelected(true)}
+          onChange={(e) => {
+            setIsOptionSelected(true);
+            onChange?.(e.target.value);
+          }}
           className={cn(
             "w-full appearance-none rounded-lg border border-stroke bg-transparent px-5.5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-dark-3 dark:bg-dark-2 dark:focus:border-primary [&>option]:text-dark-5 dark:[&>option]:text-dark-6",
             isOptionSelected && "text-dark dark:text-white",
@@ -67,6 +74,7 @@ export function Select({
 
         <ChevronUpIcon className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 rotate-180" />
       </div>
+      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
     </div>
   );
 }
